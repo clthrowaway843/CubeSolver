@@ -201,60 +201,8 @@ function faceletsToPattern(facelets: string): KPattern {
 
 }
 
-/**
- * Converts a cube's state from face-based lettering (URFDLB) to color-based lettering (WRGYOB).
- * @param faceletString The cube's state as a string using face-based lettering.
- * @returns The cube's state as a string using color-based lettering.
- */
-function convertToColorLettering(faceletString: string): string {
-    const FACE_TO_COLOR_MAP: { [key: string]: string } = {
-        U: "W", // Up -> White
-        R: "R", // Right -> Red
-        F: "G", // Front -> Green
-        D: "Y", // Down -> Yellow
-        L: "O", // Left -> Orange
-        B: "B", // Back -> Blue
-    };
-
-    return faceletString
-        .split("") // Split the string into individual characters
-        .map((char) => FACE_TO_COLOR_MAP[char] || char) // Replace each character using the mapping
-        .join(""); // Join the characters back into a string
-}
-
-function findWhiteCrossEdges(pattern: KPattern): { identity: string, position: string, orientation: number }[] {
-    // Define the fixed identities of the white cross edges
-    const FIXED_EDGE_IDENTITIES = [
-        "white/green", // Index 0
-        "white/red",   // Index 1
-        "white/blue",  // Index 2
-        "white/orange" // Index 3
-    ];
-
-    const whiteEdges: { identity: string, position: string, orientation: number }[] = [];
-
-    // Iterate over the fixed identities in order
-    FIXED_EDGE_IDENTITIES.forEach((identity, fixedIndex) => {
-        // Find the current position of the edge with this identity
-        const currentIndex = pattern.patternData.EDGES.pieces.findIndex(piece => piece === fixedIndex);
-
-        if (currentIndex !== -1) {
-            // Get the current position and orientation of the edge
-            const position = REID_EDGE_ORDER[currentIndex];
-            const orientation = pattern.patternData.EDGES.orientation[currentIndex];
-
-            // Add the edge to the list with its fixed identity
-            whiteEdges.push({ identity, position, orientation });
-        } else {
-            // If the edge is not found (shouldn't happen in a valid cube), add a placeholder
-            //whiteEdges.push({ identity, position: "unknown", orientation: -1 });
-        }
-    });
-
-    return whiteEdges;
-}
 function isWhiteCrossSolved(pattern: KPattern): boolean {
-    const whiteFace = "U"; // Assuming white is on the Up face
+    const whiteFace = "U"; 
 
     return REID_EDGE_ORDER.slice(0, 4).every((edge, idx) => {
         const piece = pattern.patternData.EDGES.pieces[idx];
@@ -330,28 +278,19 @@ function isF2LSolved(pattern: KPattern): boolean {
         return isCornerSolved && isEdgeSolved;
     });
 }
-
-function findOLL(pattern: KPattern): boolean {
-    // Check if all corner stickers have yellow (U) on top
-    const allCornersCorrect = REID_CORNER_ORDER.every((corner, idx) => {
-        const cornerOrientation = pattern.patternData.CORNERS.orientation[idx];
-        return cornerOrientation === 0; // Yellow (U) is on top for corners
-    });
-
-    // Check if all edge stickers have yellow (D) on top
-    const allEdgesCorrect = REID_EDGE_ORDER.every((edge, idx) => {
-        const edgeOrientation = pattern.patternData.EDGES.orientation[idx];
-        return edgeOrientation === 0; // Yellow (D) is on top for edges
-    });
-
-    return allCornersCorrect && allEdgesCorrect;
-}
-
 function isOLLSolved(pattern: KPattern): boolean {
-    return findOLL(pattern); // Returns true if all yellow stickers are on top
+    const facelets = patternToFacelets(pattern);
+
+    // Extract the (D face) from the facelets string
+    const yellowFace = facelets.slice(27, 36);
+
+    // Check if all stickers on the U face are yellow (D)
+    const allYellow = yellowFace.split("").every(sticker => sticker === "D");
+
+    return allYellow;
 }
 
-function findPLL(pattern: KPattern): boolean {
+function isPLLSolved(pattern: KPattern): boolean {
     // Check if all corners are in their correct positions and orientations
     const allCornersCorrect = REID_CORNER_ORDER.every((corner, idx) => {
         const cornerPiece = pattern.patternData.CORNERS.pieces[idx];
@@ -369,23 +308,11 @@ function findPLL(pattern: KPattern): boolean {
     return allCornersCorrect && allEdgesCorrect;
 }
 
-function isPLLSolved(pattern: KPattern): boolean {
-    return findPLL(pattern); // Returns true if the entire top layer is solved
-}
-
 export {
     patternToFacelets,
     faceletsToPattern,
-    convertToColorLettering,
-    REID_EDGE_ORDER,
-    REID_CORNER_ORDER,
-    findWhiteCrossEdges,
     isWhiteCrossSolved,
-    findF2LPairs,
     isF2LSolved,
-    findOLL,
     isOLLSolved,
-    findPLL,
-    isPLLSolved,
-
+    isPLLSolved
 }

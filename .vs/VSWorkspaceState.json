@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src"
+    "\\src",
+    "\\src\\handlers",
+    "\\src\\utils"
   ],
-  "SelectedNode": "\\src\\ui.ts",
+  "SelectedNode": "\\src\\handlers\\ollHandler.ts",
   "PreviewInSolutionExplorer": false
 }
