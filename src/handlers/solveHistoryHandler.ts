@@ -98,5 +98,5 @@ export function addSolveDetails(solveDetails: SolveDetails) {
     console.log(`Average of the last 5 solves: ${averageSolveTime}s`);
 
     updateSolveTimesUI();
-    updateGraphs();
+    //updateGraphs();
 }

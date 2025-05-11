@@ -13,7 +13,7 @@
     "@types/jquery": "^3.5.32",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "vite": "^5.4.2"
+    "vite": "^5.4.19"
   },
   "dependencies": {
     "@types/web-bluetooth": "^0.0.20",

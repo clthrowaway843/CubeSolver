@@ -24,6 +24,11 @@
             <button id="reset-gyro">Reset Gyro</button>
         </div>
 
+        <div id="ollAlgorithmContainer" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
+            <h3>OLL Algorithm</h3>
+            <p id="ollAlgorithm" style="font-size: 16px; font-family: monospace; color: #333;">No algorithm available</p>
+        </div>
+
         <div class="info">
 
             <label for="deviceName">Device Name</label>
@@ -84,13 +89,68 @@
         </table>
     </div>
 
-    <div id="graphs-container">
+    <style>
+        #ollAlgorithm {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+            #ollAlgorithm div {
+                flex: 1;
+                text-align: left;
+            }
+
+            #ollAlgorithm h4 {
+                margin-bottom: 10px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #555;
+            }
+
+            /* General styling for the algorithm container */
+            #ollAlgorithm p {
+                font-size: 20px; /* Increase font size */
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                color: #333; /* Default text color */
+                line-height: 1.5; /* Improve readability */
+            }
+
+            /* Styling for algorithm blocks */
+            .algorithm-block {
+                color: #d9534f; /* Standout color (red) */
+                font-weight: bold;
+                background-color: #f9f9f9; /* Light background for contrast */
+                padding: 2px 4px;
+                border-radius: 4px;
+            }
+            .algorithm-move {
+                font-size: 20px;
+                font-family: Arial, sans-serif;
+                font-weight: bold;
+                color: #333;
+                margin-right: 5px;
+            }
+
+            .algorithm-move.completed {
+                color: #aaa; /* Gray out completed moves */
+                opacity: 0.5; /* Add transparency */
+            }
+
+            .algorithm-move.next {
+                color: #d9534f; /* Highlight the next move in red */
+                text-decoration: underline;
+            }
+    </style>
+    <!-- <div id="graphs-container">
         <h2>Performance Graphs</h2>
         <canvas id="cross-graph"></canvas>
         <canvas id="f2l-graph"></canvas>
         <canvas id="oll-graph"></canvas>
         <canvas id="pll-graph"></canvas>
-    </div>
+    </div> -->
 
     <script type="module" src="/src/index.ts"></script>
 
