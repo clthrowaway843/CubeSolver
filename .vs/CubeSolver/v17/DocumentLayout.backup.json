@@ -1,37 +1,61 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\",
+  "WorkspaceRootPath": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\handlers\\cubeEventHandlers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\OLLTrainer\\OLLTrainer.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\OLLTrainer\\OLLTrainer.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:package.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\handlers\\ollHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\handlers\\solveHistoryHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\style.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\utils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\OLLTrainer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OLLTrainer.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\index.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:index.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\handlers\\solveHistoryHandler.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\handlers\\cubeEventHandlers.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:tsconfig.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:vite.config.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\utils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\utils\\cubeUtils.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts||{0F2454B1-A556-402D-A7D0-1FDE7F99DEE0}"
     }
   ],
@@ -42,20 +66,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "index.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\index.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\index.ts",
               "RelativeDocumentMoniker": "src\\index.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\index.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\index.ts",
               "RelativeToolTip": "src\\index.ts",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGEAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
               "WhenOpened": "2025-05-09T20:08:07.774Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "package.json",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\package.json",
+              "RelativeDocumentMoniker": "package.json",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\package.json",
+              "RelativeToolTip": "package.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-12T09:09:02.206Z",
               "EditorCaption": ""
             },
             {
@@ -68,63 +104,120 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "index.html",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\index.html",
-              "RelativeDocumentMoniker": "index.html",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\index.html",
-              "RelativeToolTip": "index.html",
-              "ViewState": "AgIAAIoAAAAAAAAAAAAAAJUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
-              "WhenOpened": "2025-05-11T01:37:52.346Z",
-              "EditorCaption": ""
+              "DocumentIndex": 3,
+              "Title": "style.css",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\style.css",
+              "RelativeDocumentMoniker": "src\\style.css",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\style.css",
+              "RelativeToolTip": "src\\style.css",
+              "ViewState": "AgIAAEoBAAAAAAAAAAAcwFcBAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-05-12T07:40:15.855Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "vite.config.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\vite.config.ts",
+              "RelativeDocumentMoniker": "vite.config.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\vite.config.ts",
+              "RelativeToolTip": "vite.config.ts",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABkAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-12T07:11:33.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "tsconfig.json",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\tsconfig.json",
+              "RelativeDocumentMoniker": "tsconfig.json",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\tsconfig.json",
+              "RelativeToolTip": "tsconfig.json",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAACIAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-12T06:58:53.414Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "cubeEventHandlers.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts",
-              "RelativeDocumentMoniker": "src\\handlers\\cubeEventHandlers.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts",
-              "RelativeToolTip": "src\\handlers\\cubeEventHandlers.ts",
-              "ViewState": "AgIAAAkBAAAAAAAAAADwvx8BAAAiAAAAAAAAAA==",
+              "Title": "OLLTrainer.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\OLLTrainer\\OLLTrainer.ts",
+              "RelativeDocumentMoniker": "src\\OLLTrainer\\OLLTrainer.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\OLLTrainer\\OLLTrainer.ts",
+              "RelativeToolTip": "src\\OLLTrainer\\OLLTrainer.ts",
+              "ViewState": "AgIAAM0AAAAAAAAAAAAUwOcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-05-09T20:17:15.836Z",
+              "WhenOpened": "2025-05-12T06:46:30.893Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OLLTrainer.html",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\OLLTrainer.html",
+              "RelativeDocumentMoniker": "OLLTrainer.html",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\OLLTrainer.html",
+              "RelativeToolTip": "OLLTrainer.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-12T06:45:46.013Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "index.html",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\index.html",
+              "RelativeDocumentMoniker": "index.html",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\index.html",
+              "RelativeToolTip": "index.html",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAnwGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2025-05-11T01:37:52.346Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "cubeEventHandlers.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts",
+              "RelativeDocumentMoniker": "src\\handlers\\cubeEventHandlers.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\cubeEventHandlers.ts",
+              "RelativeToolTip": "src\\handlers\\cubeEventHandlers.ts",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAswJUAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
+              "WhenOpened": "2025-05-09T20:17:15.836Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "ollHandler.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts",
               "RelativeDocumentMoniker": "src\\handlers\\ollHandler.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\ollHandler.ts",
               "RelativeToolTip": "src\\handlers\\ollHandler.ts",
-              "ViewState": "AgIAAC0BAAAAAAAAAAAIwEkBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAD0BAAAAAAAAAAAQwC4BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-05-09T23:59:38.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T23:59:38.852Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "solveHistoryHandler.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts",
               "RelativeDocumentMoniker": "src\\handlers\\solveHistoryHandler.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\handlers\\solveHistoryHandler.ts",
               "RelativeToolTip": "src\\handlers\\solveHistoryHandler.ts",
-              "ViewState": "AgIAAEsAAAAAAAAAAAAYwGQAAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-05-09T20:24:11.413Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-09T20:24:11.413Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "cubeUtils.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts",
               "RelativeDocumentMoniker": "src\\utils\\cubeUtils.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils\\cubeUtils.ts",
               "RelativeToolTip": "src\\utils\\cubeUtils.ts",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
@@ -132,24 +225,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 11,
               "Title": "utils.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils.ts",
               "RelativeDocumentMoniker": "src\\utils.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\src\\utils.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\src\\utils.ts",
               "RelativeToolTip": "src\\utils.ts",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAAAHcAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAABwBAAAAAAAAAADgvy0BAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
-              "WhenOpened": "2025-05-10T00:42:47.49Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-10T00:42:47.49Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "TwizzleLink.d-DAfRlszz.d.ts",
-              "DocumentMoniker": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
+              "DocumentMoniker": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
               "RelativeDocumentMoniker": "node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
-              "ToolTip": "C:\\Users\\illus\\OneDrive\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
+              "ToolTip": "C:\\Users\\Jordan\\Documents\\GitHub\\CubeSolver\\node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
               "RelativeToolTip": "node_modules\\cubing\\dist\\lib\\cubing\\TwizzleLink.d-DAfRlszz.d.ts",
               "ViewState": "AgIAAFUCAAAAAAAAAAD4v2cCAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003213|",
