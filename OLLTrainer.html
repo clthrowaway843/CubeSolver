@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLL Trainer</title>
+    <script type="module" src="/CubeSolver/src/OLLTrainer/OLLTrainer.ts"></script>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <a href="index.html">Back to Home</a>
+
+    <div id="oll-trainer-container">
+        <div id="oll-twisty-container"></div>
+        <div id="multiple-choice-container">
+            <h3>Which algorithm is this?</h3>
+            <div id="choices"></div>
+        </div>
+        <div id="feedback-container">
+            <h3>Feedback</h3>
+            <p id="feedback"></p>
+            <div id="previous-twisty-container" style="display: none;">
+                <h4>Previous Algorithm:</h4>
+                <div id="previous-twisty"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="algorithm-selection-container">
+        <button id="toggle-selection">Select Algorithms</button>
+        <div id="algorithm-list" style="display: none;">
+            <button id="select-all">Select All</button>
+            <button id="deselect-all">Deselect All</button>
+            <div id="algorithm-checkboxes"></div>
+        </div>
+    </div>
+</body>
+</html>
