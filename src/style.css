@@ -1,7 +1,8 @@
 body {
-  margin: 0;
-  background-color: #666;
-  font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #0f0f0f;
+    color: #64e9ed;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 #app {
@@ -24,14 +25,13 @@ body {
 }
 
 .controls button {
-  color: white;
-  background-color: #333;
-  border: 1px solid silver;
-  margin: 0.1em;
-  padding: 0.5em 1em 0.5em 1em;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 1em;
+    background-color: #f2f2f2;
+    border: 1px solid silver;
+    margin: 0.1em;
+    padding: 0.5em 1em 0.5em 1em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 1em;
 }
 
 .info {
@@ -40,27 +40,24 @@ body {
   margin: 1em 0em 1em 0em;
 }
 
-.info input {
-  font-size: 0.5em;
-  font-weight: bold;
-  color: black;
-  background-color: #eee;
-  border: 1px solid #333;
-  margin: 0.5em;
-  padding: 0.5em 1em 0.5em 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 1em;
-}
+    .info input {
+        font-size: 0.5em;
+        font-weight: bold;
+        background-color: #eee;
+        border: 1px solid #f2f2f2;
+        margin: 0.5em;
+        padding: 0.5em 1em 0.5em 1em;
+        font-family: Arial, Helvetica, sans-serif;
+        border-radius: 1em;
+    }
 
-.info label {
-  text-wrap: nowrap;
-  font-size: 0.5em;
-  color: white;
-  text-align: right;
-  margin: auto 0px auto 0px;
-  padding: 0.5em;
-  font-family: Arial, Helvetica, sans-serif;
-}
+    .info label {
+        font-size: 0.5em;
+        text-align: right;
+        margin: auto 0px auto 0px;
+        padding: 0.5em;
+        font-family: Arial, Helvetica, sans-serif;
+    }
 
 .info label::after {
   content: ':';
@@ -90,6 +87,9 @@ body {
 
 #solve-times-table {
     width: 100%;
+    color: #f2f2f2;
+    background-color: #444;
+    border: 1px solid #888;
     border-collapse: collapse;
 }
 
@@ -109,7 +109,6 @@ canvas {
 }
 
 .help {
-  color: #ffffff80;
   font-family: Arial, Helvetica, sans-serif;
   width: 20rem;
   font-size: 0.8em;
@@ -118,9 +117,8 @@ canvas {
 
 /* Styling for algorithm blocks */
 .algorithm-block {
-    color: #d9534f; /* Standout color (red) */
+    background-color: #222;
     font-weight: bold;
-    background-color: #f9f9f9; /* Light background for contrast */
     padding: 2px 4px;
     border-radius: 4px;
 }
@@ -129,21 +127,12 @@ canvas {
     font-size: 20px;
     font-family: Arial, sans-serif;
     font-weight: bold;
-    color: #333;
     margin-right: 5px;
-}
-
-#oll-twisty-container {
-    width: 100%; /* Adjust the width */
-    height: 100%; /* Adjust the height */
-    background-color: #f0f0f0; /* Light gray background */
-    margin: auto;
-    background: #0088ff22;
-    border: 4px double #00000044;
 }
 
 #scramble-container {
     flex-grow: 1;
+    color:black;
     font-family: Arial, sans-serif;
     padding: 10px;
     border: 1px solid #ccc;
@@ -161,7 +150,6 @@ canvas {
 #current-scramble {
     font-family: monospace;
     font-size: 1.2em;
-    color: #333;
 }
 
 .controls {
@@ -174,6 +162,15 @@ canvas {
 
 
 /* OLLTrainer.html styles */
+
+#oll-twisty-container {
+    background: #fff; /* or transparent, or your preferred color */
+    max-width: 384px; /* or the width of your TwistyPlayer */
+    margin: 0 auto;
+    padding: 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
 
 #previous-twisty-container {
     margin-top: 20px;
@@ -192,7 +189,7 @@ canvas {
 }
 
 .feedback {
-    font-size: 18px;
+    font-size: x-large;
     font-weight: bold;
     margin-top: 10px;
 }
@@ -201,21 +198,25 @@ canvas {
     color: green;
 }
 
-.feedback.incorrect {
-    color: red;
-}
+    .feedback.incorrect {
+        color: #ff6600;
+    }
 
-.feedback strong {
-    color: blue; /* Highlight the correct answer */
-}
+    .feedback strong {
+        color: rgb(255 191 0); /* Highlight the correct answer */
+    }
 
 #ollAlgorithm {
     display: flex;
+    color: black;
     justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
 }
 
+#ollAlgorithmContainer {
+    color: black;
+}
 #ollAlgorithm div {
     flex: 1;
     text-align: left;
@@ -225,17 +226,15 @@ canvas {
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
-    color: #555;
 }
 
 /* General styling for the algorithm container */
-#ollAlgorithm p {
-    font-size: 20px; /* Increase font size */
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    color: #333; /* Default text color */
-    line-height: 1.5; /* Improve readability */
-}
+    #ollAlgorithm p {
+        font-size: 20px; /* Increase font size */
+        font-family: Arial, sans-serif;
+        font-weight: bold;
+        line-height: 1.5; /* Improve readability */
+    }
 
 #algorithm-selection-container {
     margin: 20px 0;
@@ -246,13 +245,12 @@ canvas {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#algorithm-selection-container h3 {
-    margin: 0 0 10px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    text-align: center;
-}
+    #algorithm-selection-container h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+    }
 
 #algorithm-list {
     margin-top: 10px;
@@ -287,7 +285,7 @@ canvas {
 .checkbox-container label {
     flex-grow: 1;
     font-size: 14px;
-    color: #333;
+    color : black;
     cursor: pointer;
 }
 
@@ -297,7 +295,6 @@ canvas {
 
 .dropdown-button {
     background-color: #007bff;
-    color: white;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
@@ -342,8 +339,29 @@ canvas {
 }
 
 .reminder-text {
-    font-size: 12px;
-    color: #555;
+    font-size: 1.27em;
     margin-left: 10px;
-    font-style: italic;
+    font-style: oblique;
+}
+
+#previous-twisty-container h4 {
+    color: rgb(0 0 0); /* Example: a gold/orange color */
+}
+
+a {
+    color: #64e9ed;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #fff;
+}
+
+.label-arrow-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5em;
 }

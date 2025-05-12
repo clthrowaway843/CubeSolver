@@ -1,5 +1,6 @@
 ﻿import { TwistyPlayer } from 'cubing/twisty';
 import { ollAlgorithms, algReminders } from '../handlers/ollHandler';
+import '../style.css'
 
 // Initialize the TwistyPlayer
 const OllTwisty = new TwistyPlayer({
@@ -50,51 +51,58 @@ function populateAlgorithmList(): void {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = `alg-${index}`;
-        checkbox.checked = selectedAlgorithms.includes(Number(index)); // Reflect saved state
-        checkbox.addEventListener('change', () => {
+        checkbox.checked = selectedAlgorithms.includes(Number(index));
+        checkbox.addEventListener('change', (event) => {
             const algIndex = Number(index);
             if (checkbox.checked) {
                 selectedAlgorithms.push(algIndex);
             } else {
                 selectedAlgorithms = selectedAlgorithms.filter(i => i !== algIndex);
             }
-            // Save the updated selected algorithms to localStorage
             localStorage.setItem('selectedAlgorithms', JSON.stringify(selectedAlgorithms));
+            event.stopPropagation(); // Prevent row click
         });
 
+        // Create a container for label and arrow
+        const labelArrowContainer = document.createElement('div');
+        labelArrowContainer.className = 'label-arrow-container';
+
+        // Label: clicking it toggles the checkbox (default browser behavior)
         const label = document.createElement('label');
         label.htmlFor = `alg-${index}`;
         label.textContent = nickname;
+        // Prevent label click from toggling the dropdown
+        label.addEventListener('click', (e) => e.stopPropagation());
 
-        // Add a down arrow icon next to the label
         const arrowIcon = document.createElement('span');
         arrowIcon.className = 'arrow-icon';
         arrowIcon.textContent = ' ➢';
-        arrowIcon.addEventListener('click', () => {
+
+        // Attach click to the label-arrow container (but not the label itself)
+        labelArrowContainer.addEventListener('click', () => {
             const twistyContainer = checkboxContainer.querySelector('.twisty-container') as HTMLElement;
             if (twistyContainer) {
                 twistyContainer.style.display = twistyContainer.style.display === 'none' ? 'block' : 'none';
             } else {
-                // Create a new TwistyPlayer instance
                 const newTwistyContainer = document.createElement('div');
                 newTwistyContainer.className = 'twisty-container';
+                newTwistyContainer.style.display = 'block';
                 checkboxContainer.appendChild(newTwistyContainer);
 
                 const twisty = new TwistyPlayer({
                     experimentalSetupAnchor: 'end',
                     puzzle: '3x3x3',
                 });
-                twisty.alg = algorithm; // Set the algorithm for the OLL case
+                twisty.alg = algorithm;
                 newTwistyContainer.appendChild(twisty);
             }
         });
 
-        // Append elements to the checkbox container
-        checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(label);
-        checkboxContainer.appendChild(arrowIcon);
+        labelArrowContainer.appendChild(label);
+        labelArrowContainer.appendChild(arrowIcon);
 
-        // Append the checkbox container to the algorithm list
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(labelArrowContainer);
         algorithmCheckboxes.appendChild(checkboxContainer);
     });
 }
