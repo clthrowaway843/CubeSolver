@@ -8,6 +8,12 @@
 </head>
 
 <body>
+    <nav>
+        <ul>
+            <li><a href="/gan-cube-sample/OLLTrainer.html">OLL Trainer</a></li>
+            <!-- Add other navigation links here -->
+        </ul>
+    </nav>
 
     <div id="app">
         <div id="cube-controls-container" style="display: flex; align-items: center;">
@@ -24,7 +30,7 @@
 
         </div>
 
-        
+
         <div id="ollAlgorithmContainer" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
             <h3>OLL Algorithm</h3>
             <p id="ollAlgorithm" style="font-size: 16px; font-family: monospace; color: #333;">No algorithm available</p>
@@ -90,90 +96,6 @@
             </tbody>
         </table>
     </div>
-
-    <style>
-        #ollAlgorithm {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 20px;
-        }
-
-            #ollAlgorithm div {
-                flex: 1;
-                text-align: left;
-            }
-
-            #ollAlgorithm h4 {
-                margin-bottom: 10px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #555;
-            }
-
-            /* General styling for the algorithm container */
-            #ollAlgorithm p {
-                font-size: 20px; /* Increase font size */
-                font-family: Arial, sans-serif;
-                font-weight: bold;
-                color: #333; /* Default text color */
-                line-height: 1.5; /* Improve readability */
-            }
-
-            /* Styling for algorithm blocks */
-            .algorithm-block {
-                color: #d9534f; /* Standout color (red) */
-                font-weight: bold;
-                background-color: #f9f9f9; /* Light background for contrast */
-                padding: 2px 4px;
-                border-radius: 4px;
-            }
-            .algorithm-move {
-                font-size: 20px;
-                font-family: Arial, sans-serif;
-                font-weight: bold;
-                color: #333;
-                margin-right: 5px;
-            }
-
-
-            #oll-twisty-container {
-                width: 100%; /* Adjust the width */
-                height: 100%; /* Adjust the height */
-                background-color: #f0f0f0; /* Light gray background */
-                margin: auto;
-                background: #0088ff22;
-                border: 4px double #00000044;
-            }
-
-        #scramble-container {
-            flex-grow: 1;
-            font-family: Arial, sans-serif;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-            margin-left: 20px;
-        }
-        #cube-controls-container {
-            display: flex;
-            align-items: center; /* Vertically align items */
-            gap: 0; /* No gap between cube and controls */
-        }
-            #current-scramble {
-                font-family: monospace;
-                font-size: 1.2em;
-                color: #333;
-            }
-
-            .controls {
-                display: flex;
-                flex-direction: column; /* Stack buttons vertically */
-                gap: 10px; /* Add space between buttons */
-            }
-
-    </style>
-    
 
     <script type="module" src="/src/index.ts"></script>
 

@@ -1,4 +1,4 @@
-import Chart from 'chart.js/auto';
+//import Chart from 'chart.js/auto';
 
 interface SolveDetails {
     totalTime: number;
@@ -29,10 +29,11 @@ function updateSolveTimesUI() {
     });
 }
 
-let crossGraphChart: Chart | null = null;
+/*let crossGraphChart: Chart | null = null;
 let f2lGraphChart: Chart | null = null;
 let ollGraphChart: Chart | null = null;
-let pllGraphChart: Chart | null = null;
+let pllGraphChart: Chart | null = null;*/
+/*
 function updateGraphs() {
     const labels = solveDetailsHistory.map((_, index) => `Solve ${index + 1}`);
     const crossTimes = solveDetailsHistory.map((solve) => solve.crossTime);
@@ -78,7 +79,7 @@ function updateGraphs() {
     ollGraphChart = createGraph('oll-graph', 'OLL Times', ollTimes, ollGraphChart);
     pllGraphChart = createGraph('pll-graph', 'PLL Times', pllTimes, pllGraphChart);
 }
-
+*/
 export function addSolveDetails(solveDetails: SolveDetails) {
     solveDetailsHistory.push(solveDetails);
 

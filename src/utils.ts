@@ -259,7 +259,7 @@ function findF2LPairs(pattern: KPattern): {
 function isF2LSolved(pattern: KPattern): boolean {
     const f2lPairs = findF2LPairs(pattern);
 
-    return f2lPairs.every(({ pair, corner, edge }) => {
+    return f2lPairs.every(({ corner, edge }) => {
         // Get the solved positions of the corner and edge for this pair
         const solvedCornerIndex = REID_CORNER_ORDER.indexOf(corner.position);
         const solvedEdgeIndex = REID_EDGE_ORDER.indexOf(edge.position);
@@ -292,14 +292,14 @@ function isOLLSolved(pattern: KPattern): boolean {
 
 function isPLLSolved(pattern: KPattern): boolean {
     // Check if all corners are in their correct positions and orientations
-    const allCornersCorrect = REID_CORNER_ORDER.every((corner, idx) => {
+    const allCornersCorrect = REID_CORNER_ORDER.every((_, idx) => {
         const cornerPiece = pattern.patternData.CORNERS.pieces[idx];
         const cornerOrientation = pattern.patternData.CORNERS.orientation[idx];
         return cornerPiece === idx && cornerOrientation === 0; // Correct position and orientation
     });
 
     // Check if all edges are in their correct positions and orientations
-    const allEdgesCorrect = REID_EDGE_ORDER.every((edge, idx) => {
+    const allEdgesCorrect = REID_EDGE_ORDER.every((_, idx) => {
         const edgePiece = pattern.patternData.EDGES.pieces[idx];
         const edgeOrientation = pattern.patternData.EDGES.orientation[idx];
         return edgePiece === idx && edgeOrientation === 0; // Correct position and orientation

@@ -39,7 +39,7 @@ function reorientFaceletsYellowTopGreenFront(facelets: string): string {
 * Rotates the U layer by uRot * 90° clockwise.
 * Returns a string of 21 characters (color letters).
 */
-function extractOLL21(facelets: string, yellowColor: string, uRot: number): string {
+function extractOLL21(facelets: string): string {
     // Indexes for mask positions in the reoriented facelets string:
     const uRotMaps = [
         {
@@ -78,11 +78,11 @@ function convertFaceletsToBinary(facelets: string): string {
  * Determine which OLL mask the top layer matches, if any.
  * Returns the index of the matching mask, or -1 if no match is found.
  */
-export function findMatchingOLLMask(facelets: string, yellowColor: string = "y"): { index: number; rotation: number } | null {
+export function findMatchingOLLMask(facelets: string): { index: number; rotation: number } | null {
     const reoriented = reorientFaceletsYellowTopGreenFront(facelets);
 
     for (let uRot = 0; uRot < 4; uRot++) {
-        const layer = convertFaceletsToBinary(extractOLL21(reoriented, yellowColor, uRot));
+        const layer = convertFaceletsToBinary(extractOLL21(reoriented));
         if (layer in OLL_MASKS_MAP) {
             return OLL_MASKS_MAP[layer]; // Return the index and rotation
         }
@@ -210,14 +210,14 @@ OLL_MASKS.forEach((mask, index) => {
 });
 
 
-const algorithmNicknames: { [key: string]: string } = {
+export const algorithmNicknames: { [key: string]: string } = {
     "R U R' U'": "Sexy move",
     "R' F R F'": "Sledgehammer",
     "R U R' U R U2 R'": "Sune",
     "R' U' R U' R' U2 R": "Sune from back",
 };
 
-const ollAlgorithms: { [key: number]: string } = {
+export const ollAlgorithms: { [key: number]: string } = {
     1: "(R U2 R2) (F R F') U2 (R' F R F')",
     2: "F (R U R' U') F' f (R U R' U') f'",
     3: "f (R U R' U') f' (U') F (R U R' U') F'",
@@ -276,6 +276,42 @@ const ollAlgorithms: { [key: number]: string } = {
     56: "(r U r') (U R U' R') (U R U' R') (r U' r')",
     57: "R U R' U' R' r U R U' r'",
 };
+
+export const algReminders: { [key: number]: string } = {
+    2: "F sexy F'  f sexy f'",
+    3: "f sexy f'  U'  F sexy F'",
+    4: "f sexy f'  U   F sexy F'",
+    5: "Fat antisune (U2 start)",
+    6: "Fat sune (U2 start)",
+    7: "Fat sune",
+    8: "Fat antisune",
+
+    11: "f' to left S move ending",
+    12: "f to right S move ending",
+
+    28: "fat sexy skinny sexy",
+    57: "skinny sexy fat sexy",
+
+    33: "Second half of y perm",
+    37: "First half of y perm",
+
+    41: "sune F sexy F'",
+    42: "antisune F sexy F'",
+    43: "f' lefty sexy f",
+    44: "F sexy F'",
+    51: "f double sexy f'",
+
+    45: "2 look alg for line",
+    47: "F' double lefty sexy F",
+    48: "F double sexy F'",
+    53: "fat antisune w extra double back",
+    54: "fat sune w extra double back",
+
+    49: "righty twisty thing",
+    50: "lefty twisty thing",
+
+    55: "Double flick with right index"
+}
 
 export function getOLLAlgorithm(ollMaskIndex: number, rotation: number): { original: string; nicknamed: string } | null {
     const originalAlgorithm = ollAlgorithms[ollMaskIndex];

@@ -23,7 +23,6 @@ let f2lCompletionTime: number | null = null;
 let ollCompletionTime: number | null = null;
 let pllCompletionTime: number | null = null;
 
-let lastMoveTime: number | null = null; // Timestamp of the last move
 let inactivityTimer: NodeJS.Timeout | null = null; // Timer for detecting inactivity
 const MIN_SCRAMBLE_MOVES = 5; // Minimum number of moves required for scrambling
 
@@ -98,8 +97,6 @@ function detectOLLMask(currentPattern: KPattern): { index: number; rotation: num
     return findMatchingOLLMask(patternToFacelets(currentPattern));
 }
 
-let currentOLLMask: { index: number; rotation: number } | null = null;
-let currentAlgorithm: string | null = null; // Stores the current algorithm
 let solveMode: "standard" | "ollTrainer" = "ollTrainer"; 
 
 // Create a new TwistyPlayer instance
@@ -133,26 +130,23 @@ async function handleMoveEvent(event: GanCubeEvent, twistyPlayer: TwistyPlayer) 
 
         // Handle logic based on the solve mode
         if (solveMode === "standard") {
-            handleStandardSolveMode(currentPattern, twistyPlayer);
+            handleStandardSolveMode(currentPattern);
         } else if (solveMode === "ollTrainer") {
-            handleOLLTrainerMode(currentPattern, twistyPlayer);
+            handleOLLTrainerMode(currentPattern);
         }
 
     }
 }
 
-function handleStandardSolveMode(currentPattern: KPattern, twistyPlayer: TwistyPlayer) {
+function handleStandardSolveMode(currentPattern: KPattern) {
     if (solveState === "solved") {
         console.log("Scrambling started...");
         solveState = "scrambling";
         lastMoves = [];
-        lastMoveTime = now();
         return;
     }
 
     if (solveState === "scrambling") {
-        lastMoveTime = now();
-
         if (inactivityTimer) {
             clearTimeout(inactivityTimer);
         }
@@ -263,7 +257,7 @@ function resetSolve()
     pllCompletionTime = null;
 }
 
-async function handleOLLTrainerMode(currentPattern: KPattern, twistyPlayer: TwistyPlayer) {
+async function handleOLLTrainerMode(currentPattern: KPattern) {
     const ollMask = detectOLLMask(currentPattern);
 
     if (ollMask) {
@@ -288,7 +282,7 @@ async function handleOLLTrainerMode(currentPattern: KPattern, twistyPlayer: Twis
         OllTwisty.alg = randomOLL;
         const scrambleContainer = document.getElementById('current-scramble');
         if (scrambleContainer) {
-            scrambleContainer.textContent = scramble;
+            scrambleContainer.textContent = scramble.toString();
         }
 
         console.log(`New scramble for OLL case generated: ${scramble}`);

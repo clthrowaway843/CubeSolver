@@ -9,10 +9,8 @@ import
     {
         connectGanCube,
         GanCubeConnection,
-        GanCubeMove,
         MacAddressProvider
-    } from 'gan-web-bluetooth';
-
+} from 'gan-web-bluetooth';
 
 var twistyPlayer = new TwistyPlayer({
     puzzle: '3x3x3',

@@ -17,7 +17,7 @@ export default defineConfig({
             {
                 name: 'disable-nested-workers',
                 enforce: 'pre',
-                transform(code, id) {
+                transform(code, _) {
                     if (code.includes('new Worker') && code.includes('new URL') && code.includes('import.meta.url')) {
                         const result = code.replace(workerImportMetaUrlRE, `((() => { throw new Error('Nested workers are disabled') })()`);
                         return result;
