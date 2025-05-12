@@ -1,5 +1,4 @@
-## Sample Rubik's Cube Solver using CFOP
+## Sample Rubik's Cube bluetooth application
 
-This is simple one-page application which uses [gan-web-bluetooth](https://github.com/afedotov/gan-web-bluetooth) library.
-It provides simple demonstration of connectivity with GAN Smart Cubes using Gen2, Gen3 and Gen4 protocol versions.
+This is an application which uses [gan-web-bluetooth](https://github.com/afedotov/gan-web-bluetooth) library.
 
