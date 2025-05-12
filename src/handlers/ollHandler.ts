@@ -94,11 +94,11 @@ export function findMatchingOLLMask(facelets: string, yellowColor: string = "y")
 function prependRotationMoves(algorithm: string, rotation: number): string {
     let rotationMoves = "";
     if (rotation === 1) {
-        rotationMoves = "U ";
+        rotationMoves = "U' ";
     } else if (rotation === 2) {
         rotationMoves = "U2 ";
     } else if (rotation === 3) {
-        rotationMoves = "U' ";
+        rotationMoves = "U ";
     }
     return rotationMoves + algorithm;
 }
@@ -226,7 +226,7 @@ const ollAlgorithms: { [key: number]: string } = {
     6: "r U2 (R' U' R U') r'",
     7: "r (U R' U R) U2 r'",
     8: "r' (U' R U' R') U2 r",
-    9: "(R U R' U') (R' F R) (R U R' U') F'",
+    9: "(R U R' U') (R' F R2) (U R' U' F')",
     10: "(R U R' U) (R' F R F') (R U2 R')",
     11: "r U R' U R' F R F' R U2 r'",
     12: "F (R U R' U') F' U F (R U R' U') F'",
@@ -279,13 +279,15 @@ const ollAlgorithms: { [key: number]: string } = {
 
 export function getOLLAlgorithm(ollMaskIndex: number, rotation: number): { original: string; nicknamed: string } | null {
     const originalAlgorithm = ollAlgorithms[ollMaskIndex];
-    if (!originalAlgorithm) return null;
+    if (!originalAlgorithm)
+        return null;
 
     const rotatedAlgorithm = prependRotationMoves(originalAlgorithm, rotation);
     const nicknamedAlgorithm = condenseAlgorithmWithNicknames(rotatedAlgorithm);
 
     return { original: rotatedAlgorithm, nicknamed: nicknamedAlgorithm };
 }
+
 function condenseAlgorithmWithNicknames(algorithm: string): string {
     let condensedAlgorithm = algorithm;
 
@@ -310,4 +312,19 @@ function condenseAlgorithmWithNicknames(algorithm: string): string {
     });
 
     return condensedAlgorithm;
+}
+
+export function getRandomOLLAlgorithm(): { index: number; algorithm: string; nickname: string }
+{
+    // Get all OLL indices
+    const ollIndices = Object.keys(ollAlgorithms).map(Number);
+
+    // Select a random index
+    const randomIndex = ollIndices[Math.floor(Math.random() * ollIndices.length)];
+
+    // Get the algorithm and nickname
+    const algorithm = ollAlgorithms[randomIndex];
+    const nickname = algorithmNicknames[algorithm] || "No nickname";
+
+    return { index: randomIndex, algorithm, nickname };
 }

@@ -10,23 +10,25 @@
 <body>
 
     <div id="app">
+        <div id="cube-controls-container" style="display: flex; align-items: center;">
+            <div id="cube"></div>
+            <div class="controls">
+                <button id="connect">Connect</button>
+                <button id="reset-state">Reset State</button>
+                <button id="reset-gyro">Reset Gyro</button>
+            </div>
+            <div id="scramble-container">
+                <h3>Current Scramble:</h3>
+                <p id="current-scramble">No scramble generated yet.</p>
+            </div>
 
-        <div class="help">
-            Scramble cube to arbitrary state then press SPACE or touch Cube
-            to activate basic solving timer
         </div>
 
-        <div id="cube"></div>
-
-        <div class="controls">
-            <button id="connect">Connect</button>
-            <button id="reset-state">Reset State</button>
-            <button id="reset-gyro">Reset Gyro</button>
-        </div>
-
+        
         <div id="ollAlgorithmContainer" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9;">
             <h3>OLL Algorithm</h3>
             <p id="ollAlgorithm" style="font-size: 16px; font-family: monospace; color: #333;">No algorithm available</p>
+            <div id="oll-twisty-container" style="width: 384px; height: 256px;"></div>
         </div>
 
         <div class="info">
@@ -134,23 +136,44 @@
                 margin-right: 5px;
             }
 
-            .algorithm-move.completed {
-                color: #aaa; /* Gray out completed moves */
-                opacity: 0.5; /* Add transparency */
+
+            #oll-twisty-container {
+                width: 100%; /* Adjust the width */
+                height: 100%; /* Adjust the height */
+                background-color: #f0f0f0; /* Light gray background */
+                margin: auto;
+                background: #0088ff22;
+                border: 4px double #00000044;
             }
 
-            .algorithm-move.next {
-                color: #d9534f; /* Highlight the next move in red */
-                text-decoration: underline;
+        #scramble-container {
+            flex-grow: 1;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin-left: 20px;
+        }
+        #cube-controls-container {
+            display: flex;
+            align-items: center; /* Vertically align items */
+            gap: 0; /* No gap between cube and controls */
+        }
+            #current-scramble {
+                font-family: monospace;
+                font-size: 1.2em;
+                color: #333;
             }
+
+            .controls {
+                display: flex;
+                flex-direction: column; /* Stack buttons vertically */
+                gap: 10px; /* Add space between buttons */
+            }
+
     </style>
-    <!-- <div id="graphs-container">
-        <h2>Performance Graphs</h2>
-        <canvas id="cross-graph"></canvas>
-        <canvas id="f2l-graph"></canvas>
-        <canvas id="oll-graph"></canvas>
-        <canvas id="pll-graph"></canvas>
-    </div> -->
+    
 
     <script type="module" src="/src/index.ts"></script>
 
