@@ -1,4 +1,4 @@
-import{p as H}from"./chunk-Y3BVWVFU-BlqH06U-.js";import{A as N,p as E}from"./ollHandler-BncGAGVE.js";import{g as y}from"./main-DL6MLyrE.js";var J=null;async function _B(){return J??(J=K())}async function K(){return H(await E.fto.kpuzzle(),`SubgroupSizes 24 12 11 12 12 11 10 9 11 8 10 9 7 8 10 10 6 9 8 5 7 6 5 4 4 8 7 3 6 6 360
+import{p as H}from"./chunk-Y3BVWVFU-DW5quxxE.js";import{A as N,p as E}from"./ollHandler-D_qtY1dw.js";import{g as y}from"./main-B-XyWxt3.js";var J=null;async function _B(){return J??(J=K())}async function K(){return H(await E.fto.kpuzzle(),`SubgroupSizes 24 12 11 12 12 11 10 9 11 8 10 9 7 8 10 10 6 9 8 5 7 6 5 4 4 8 7 3 6 6 360
 
 Alg T
 Alg B
