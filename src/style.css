@@ -117,10 +117,11 @@ canvas {
 
 /* Styling for algorithm blocks */
 .algorithm-block {
-    background-color: #222;
+    background: none;
+    color: #222; /* dark text for light background */
     font-weight: bold;
-    padding: 2px 4px;
-    border-radius: 4px;
+    padding: 0;
+    border-radius: 0;
 }
 
 .algorithm-move {
@@ -364,4 +365,12 @@ a:hover {
     align-items: center;
     cursor: pointer;
     gap: 0.5em;
+}
+
+/* Make nicknamed moves more readable */
+.algorithm-nickname {
+    color: #1565c0; /* a readable blue */
+    font-weight: bold;
+    background: none;
+    padding: 0;
 }

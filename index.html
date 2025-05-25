@@ -19,15 +19,13 @@
         <div id="cube-controls-container" style="display: flex; align-items: center;">
             <div id="cube"></div>
             <div class="controls">
+                <label for="userMacInput">Connect to MAC</label>
+                <input id="userMacInput" type="text" placeholder="Enter MAC address (optional)">
+
                 <button id="connect">Connect</button>
                 <button id="reset-state">Reset State</button>
                 <button id="reset-gyro">Reset Gyro</button>
             </div>
-            <div id="scramble-container">
-                <h3>Current Scramble:</h3>
-                <p id="current-scramble">No scramble generated yet.</p>
-            </div>
-
         </div>
 
 
@@ -96,6 +94,7 @@
             </tbody>
         </table>
     </div>
+
 
     <script type="module" src="/src/index.ts"></script>
 

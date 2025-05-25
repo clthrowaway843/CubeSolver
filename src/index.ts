@@ -2,7 +2,7 @@ import './style.css'
 import $ from 'jquery';
 import { TwistyPlayer } from 'cubing/twisty';
 import * as UTILS from './utils';
-import { handleCubeEvent } from './handlers/cubeEventHandlers';
+import { handleCubeEvent, resetGyroBasis } from './handlers/cubeEventHandlers';
 import { SOLVED_STATE } from './handlers/cubeEventHandlers';
 import * as THREE from 'three';
 import
@@ -35,7 +35,6 @@ var conn: GanCubeConnection | null;
 var twistyScene: THREE.Scene;
 var twistyVantage: any;
 
-var basis: THREE.Quaternion | null;
 var cubeQuaternion: THREE.Quaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(30 * Math.PI / 180, -30 * Math.PI / 180, 0));
 
 async function animateCubeOrientation()
@@ -54,18 +53,27 @@ requestAnimationFrame(animateCubeOrientation);
 
 $('#reset-state').on('click', async () =>
 {
-    await conn?.sendCubeCommand({ type: "REQUEST_RESET" });
-    twistyPlayer.alg = '';
+    await conn?.sendCubeCommand({ type: "REQUEST_FACELETS" });
 });
 
 $('#reset-gyro').on('click', async () =>
 {
-    basis = null;
+    // Call a function to reset basis in cubeEventHandlers.ts
+    resetGyroBasis();
 });
 
-const customMacAddressProvider: MacAddressProvider = async (): Promise<string | null> =>
-{
-    return "AB:12:34:62:A2:02"; // Always return the constant MAC address
+// Set default MAC on page load if not present
+const DEFAULT_MAC = "AB:12:34:62:A2:02";
+const userMacInput = $('#userMacInput');
+const macDisplay = $('#deviceMAC');
+
+// Don't prefill userMacInput; let it be empty unless user enters something
+
+const customMacAddressProvider: MacAddressProvider = async (): Promise<string | null> => {
+    let mac = (userMacInput.val() as string)?.trim();
+    if (!mac) mac = DEFAULT_MAC;
+    localStorage.setItem('cubeMac', mac); // Optionally remember last used MAC
+    return mac;
 };
 
 $('#connect').on('click', async () =>
@@ -74,6 +82,7 @@ $('#connect').on('click', async () =>
         conn.disconnect();
         conn = null;
     } else {
+        // You need a BluetoothDevice to call customMacAddressProvider, so use connectGanCube with the provider directly
         conn = await connectGanCube(customMacAddressProvider);
         conn.events$.subscribe((event) =>
             handleCubeEvent(event, twistyPlayer, basis, cubeQuaternion)
@@ -82,7 +91,7 @@ $('#connect').on('click', async () =>
         await conn.sendCubeCommand({ type: "REQUEST_FACELETS" });
         await conn.sendCubeCommand({ type: "REQUEST_BATTERY" });
         $('#deviceName').val(conn.deviceName);
-        $('#deviceMAC').val(conn.deviceMAC);
+        macDisplay.val(conn.deviceMAC); // Show the actual connected MAC
         $('#connect').html('Disconnect');
     }
 });

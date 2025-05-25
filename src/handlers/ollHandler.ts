@@ -1,4 +1,3 @@
-
 /**
 * Rotate the facelets string so yellow is U, green is F, orange is R, etc.
 */
@@ -36,7 +35,7 @@ function reorientFaceletsYellowTopGreenFront(facelets: string): string {
 /**
 * Extract the 21 stickers relevant for OLL mask comparison, in the mask's order,
 * from the facelets string in yellow-on-top, green-front orientation.
-* Rotates the U layer by uRot * 90° clockwise.
+* Rotates the U layer by uRot * 90ï¿½ clockwise.
 * Returns a string of 21 characters (color letters).
 */
 function extractOLL21(facelets: string): string {
@@ -104,7 +103,7 @@ function prependRotationMoves(algorithm: string, rotation: number): string {
 }
 
 /**
- * Rotate a 21-character mask by 90° clockwise.
+ * Rotate a 21-character mask by 90ï¿½ clockwise.
  * Mask convention:
  * - Indexes 0-8: U face
  * - Indexes 9-11: R face top row
@@ -205,7 +204,7 @@ OLL_MASKS.forEach((mask, index) => {
     // Add all 4 rotations to the hash map
     for (let rotation = 0; rotation < 4; rotation++) {
         OLL_MASKS_MAP[currentMask] = { index: index + 1, rotation }; // Store both the algorithm index and rotation
-        currentMask = rotateMask(currentMask); // Rotate the mask by 90°
+        currentMask = rotateMask(currentMask); // Rotate the mask by 90ï¿½
     }
 });
 
@@ -338,7 +337,10 @@ function condenseAlgorithmWithNicknames(algorithm: string): string {
     // Replace nicknamed sequences with styled nicknames
     for (const [sequence, nickname] of Object.entries(algorithmNicknames)) {
         const regex = new RegExp(sequence.replace(/ /g, "\\s+"), "g");
-        condensedAlgorithm = condensedAlgorithm.replace(regex, `<strong style="color: blue;">${nickname}</strong>`);
+        condensedAlgorithm = condensedAlgorithm.replace(
+            regex,
+            `<span class="algorithm-nickname">${nickname}</span>`
+        );
     }
 
     // Split the algorithm into individual moves and wrap each move in a span

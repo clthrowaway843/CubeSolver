@@ -46,7 +46,15 @@ async function handleFaceletsEvent(event: GanCubeEvent, twistyPlayer: TwistyPlay
 
 const HOME_ORIENTATION = new THREE.Quaternion().setFromEuler(new THREE.Euler(15 * Math.PI / 180, -20 * Math.PI / 180, 0));
 
-async function handleGyroEvent(event: GanCubeEvent, basis: THREE.Quaternion | null, cubeQuaternion: THREE.Quaternion) {
+// Declare basis as a global variable
+let basis: THREE.Quaternion | null = null;
+
+// Add this function:
+export function resetGyroBasis() {
+    basis = null;
+}
+
+async function handleGyroEvent(event: GanCubeEvent, cubeQuaternion: THREE.Quaternion) {
     if (event.type == "GYRO") {
         let { x: qx, y: qy, z: qz, w: qw } = event.quaternion;
         let quat = new THREE.Quaternion(qx, qz, -qy, qw).normalize();
@@ -68,12 +76,12 @@ var lastMoves: GanCubeMove[] = [];
 export function handleCubeEvent(
     event: GanCubeEvent,
     twistyPlayer: TwistyPlayer,
-    basis: THREE.Quaternion | null,
+    _basis: THREE.Quaternion | null, // not used anymore
     cubeQuaternion: THREE.Quaternion
     ) {
     
     if (event.type == "GYRO") {
-        handleGyroEvent(event, basis, cubeQuaternion);
+        handleGyroEvent(event, cubeQuaternion); // only pass cubeQuaternion
     } else if (event.type == "MOVE") {
         handleMoveEvent(event, twistyPlayer);
     } else if (event.type == "FACELETS") {
@@ -271,24 +279,8 @@ async function handleOLLTrainerMode(currentPattern: KPattern) {
             updateOLLAlgorithmDisplay(ollNumber, rotation, ollAlgorithm.original, ollAlgorithm.nicknamed);
         }
     }
-
-    const ollSolved = UTILS.isOLLSolved(currentPattern);
-    if (ollSolved) {
-        console.log("OLL solved! Generating a new scramble for a random OLL case...");
-
-        // Generate a scramble for a random OLL case
-        const randomOLL = getRandomOLLAlgorithm().algorithm.replace(/[()]/g, '');
-        const scramble = Alg.fromString(randomOLL).invert();
-        OllTwisty.alg = randomOLL;
-        const scrambleContainer = document.getElementById('current-scramble');
-        if (scrambleContainer) {
-            scrambleContainer.textContent = scramble.toString();
-        }
-
-        console.log(`New scramble for OLL case generated: ${scramble}`);
-    }
-
 }
+
 function updateOLLAlgorithmDisplay(ollNumber: number, rotation: number, algorithm: string, nicknamed: string): void
 {
     // Update the header with the OLL case number and rotation
