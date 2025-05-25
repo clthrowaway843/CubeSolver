@@ -104,7 +104,27 @@ function detectOLLMask(currentPattern: KPattern): { index: number; rotation: num
     return findMatchingOLLMask(patternToFacelets(currentPattern));
 }
 
-let solveMode: "standard" | "ollTrainer" = "ollTrainer"; 
+// Track the current solve mode globally
+let solveMode: "standard" | "ollTrainer" = "standard";
+
+// Listen for solve mode changes from the UI and reset state accordingly
+window.addEventListener('solveModeChanged', (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const mode = customEvent.detail.mode;
+    if (mode === "oll") {
+        solveMode = "ollTrainer";
+        // Reset solve state for OLL Trainer mode
+        solveState = "solved";
+        resetSolve();
+        // Optionally, hide/show UI elements here if needed
+    } else {
+        solveMode = "standard";
+        // Reset solve state for Timed Solve mode
+        solveState = "solved";
+        resetSolve();
+        // Optionally, hide/show UI elements here if needed
+    }
+});
 
 // Create a new TwistyPlayer instance
 const OllTwisty = new TwistyPlayer({

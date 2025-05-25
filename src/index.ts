@@ -103,3 +103,38 @@ twistyPlayer.experimentalModel.currentPattern.addFreshListener(async (kpattern) 
         twistyPlayer.alg = '';
     }
 });
+
+// Track the current solve mode
+let solveMode: "timed" | "oll" = "timed";
+
+// Listen for solve mode changes from the UI
+window.addEventListener('solveModeChanged', (e: Event) => {
+    const customEvent = e as CustomEvent;
+    const mode = customEvent.detail.mode;
+    if (mode === "oll") {
+        solveMode = "oll";
+        // Hide solve times and timer, show OLL Trainer UI
+        document.getElementById('solve-times-container')!.style.display = "none";
+        document.getElementById('timer')!.style.display = "none";
+        document.getElementById('ollAlgorithmContainer')!.style.display = "";
+        // Optionally, reset or prepare OLL Trainer state here
+    } else {
+        solveMode = "timed";
+        // Show solve times and timer, hide OLL Trainer UI
+        document.getElementById('solve-times-container')!.style.display = "";
+        document.getElementById('timer')!.style.display = "";
+        document.getElementById('ollAlgorithmContainer')!.style.display = "none";
+        // Optionally, reset or prepare Timed Solve state here
+    }
+});
+
+// On load, ensure correct initial visibility
+if (solveMode === "timed") {
+    document.getElementById('solve-times-container')!.style.display = "";
+    document.getElementById('timer')!.style.display = "";
+    document.getElementById('ollAlgorithmContainer')!.style.display = "none";
+} else {
+    document.getElementById('solve-times-container')!.style.display = "none";
+    document.getElementById('timer')!.style.display = "none";
+    document.getElementById('ollAlgorithmContainer')!.style.display = "";
+}

@@ -10,7 +10,48 @@ interface SolveDetails {
 
 var solveDetailsHistory: SolveDetails[] = [];
 
+// Allow user to set how many solves to keep (default 10)
+let maxSolveHistory = 10;
+
+// Create and insert a selector for number of solves to keep
+function createSolveHistorySelector() {
+    let container = document.getElementById('solve-times-container');
+    if (!container) return;
+
+    let existing = document.getElementById('solve-history-count-selector');
+    if (existing) return; // Don't add twice
+
+    const label = document.createElement('label');
+    label.textContent = "Show last ";
+    label.style.marginRight = "4px";
+    label.htmlFor = "solve-history-count-selector";
+
+    const select = document.createElement('select');
+    select.id = "solve-history-count-selector";
+    [5, 10, 20, 50, 100].forEach(val => {
+        const option = document.createElement('option');
+        option.value = val.toString();
+        option.textContent = val.toString();
+        if (val === maxSolveHistory) option.selected = true;
+        select.appendChild(option);
+    });
+
+    select.addEventListener('change', () => {
+        maxSolveHistory = parseInt(select.value, 10);
+        // Trim history if needed and update UI
+        if (solveDetailsHistory.length > maxSolveHistory) {
+            solveDetailsHistory = solveDetailsHistory.slice(-maxSolveHistory);
+        }
+        updateSolveTimesUI();
+    });
+
+    container.insertBefore(label, container.firstChild);
+    container.insertBefore(select, label.nextSibling);
+}
+
 function updateSolveTimesUI() {
+    createSolveHistorySelector();
+
     const tableBody = document.querySelector('#solve-times-table tbody')!;
     tableBody.innerHTML = ''; // Clear existing rows
 
@@ -29,66 +70,15 @@ function updateSolveTimesUI() {
     });
 }
 
-/*let crossGraphChart: Chart | null = null;
-let f2lGraphChart: Chart | null = null;
-let ollGraphChart: Chart | null = null;
-let pllGraphChart: Chart | null = null;*/
-/*
-function updateGraphs() {
-    const labels = solveDetailsHistory.map((_, index) => `Solve ${index + 1}`);
-    const crossTimes = solveDetailsHistory.map((solve) => solve.crossTime);
-    const f2lTimes = solveDetailsHistory.map((solve) => solve.f2lTime);
-    const ollTimes = solveDetailsHistory.map((solve) => solve.ollTime);
-    const pllTimes = solveDetailsHistory.map((solve) => solve.pllTime);
-
-    const createGraph = (ctx: string, label: string, data: number[], chartInstance: Chart | null): Chart => {
-        // Destroy the existing chart instance if it exists
-        if (chartInstance) {
-            chartInstance.destroy();
-        }
-
-        return new Chart(document.getElementById(ctx) as HTMLCanvasElement, {
-            type: 'line',
-            data: {
-                labels,
-                datasets: [
-                    {
-                        label,
-                        data: data.map((time) => time / 1000), // Convert to seconds
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                        borderWidth: 2,
-                    },
-                ],
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: { display: true },
-                },
-                scales: {
-                    //y: { beginAtZero: true },
-                },
-            },
-        });
-    };
-
-    // Update each graph and store the new chart instance
-    crossGraphChart = createGraph('cross-graph', 'Cross Times', crossTimes, crossGraphChart);
-    f2lGraphChart = createGraph('f2l-graph', 'F2L Times', f2lTimes, f2lGraphChart);
-    ollGraphChart = createGraph('oll-graph', 'OLL Times', ollTimes, ollGraphChart);
-    pllGraphChart = createGraph('pll-graph', 'PLL Times', pllTimes, pllGraphChart);
-}
-*/
 export function addSolveDetails(solveDetails: SolveDetails) {
     solveDetailsHistory.push(solveDetails);
 
-    // Keep only the 5 most recent solves
-    if (solveDetailsHistory.length > 5) {
-        solveDetailsHistory.shift();
+    // Keep only the most recent solves as set by maxSolveHistory
+    if (solveDetailsHistory.length > maxSolveHistory) {
+        solveDetailsHistory = solveDetailsHistory.slice(-maxSolveHistory);
     }
 
-    console.log("Last 5 solve times:");
+    console.log(`Last ${maxSolveHistory} solve times:`);
     solveDetailsHistory.forEach((solve, index) => {
         console.log(`Solve ${index + 1}: ${solve.totalTime}s`);
     });
@@ -96,8 +86,7 @@ export function addSolveDetails(solveDetails: SolveDetails) {
     const averageSolveTime =
         solveDetailsHistory.reduce((sum, solve) => sum + solve.totalTime, 0) /
         solveDetailsHistory.length;
-    console.log(`Average of the last 5 solves: ${averageSolveTime}s`);
+    console.log(`Average of the last ${solveDetailsHistory.length} solves: ${averageSolveTime}s`);
 
     updateSolveTimesUI();
-    //updateGraphs();
 }

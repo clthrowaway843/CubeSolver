@@ -16,6 +16,10 @@
     </nav>
 
     <div id="app">
+        <div style="margin-bottom: 16px;">
+            <button id="toggle-solve-mode">Switch to OLL Trainer Mode</button>
+            <span id="current-solve-mode-label" style="margin-left: 8px;">Current Mode: Timed Solve</span>
+        </div>
         <div id="cube-controls-container" style="display: flex; align-items: center;">
             <div id="cube"></div>
             <div class="controls">
@@ -96,7 +100,25 @@
 
 
     <script type="module" src="/src/index.ts"></script>
-
+    <script>
+            // Simple front-end toggle logic (update your TS as needed for full integration)
+            let solveMode = "timed"; // or "oll"
+            const toggleBtn = document.getElementById('toggle-solve-mode');
+            const modeLabel = document.getElementById('current-solve-mode-label');
+            toggleBtn.addEventListener('click', () => {
+                if (solveMode === "timed") {
+                    solveMode = "oll";
+                    toggleBtn.textContent = "Switch to Timed Solve Mode";
+                    modeLabel.textContent = "Current Mode: OLL Trainer";
+                } else {
+                    solveMode = "timed";
+                    toggleBtn.textContent = "Switch to OLL Trainer Mode";
+                    modeLabel.textContent = "Current Mode: Timed Solve";
+                }
+                // Optionally, call your TS/JS logic to actually switch modes in your app
+                window.dispatchEvent(new CustomEvent('solveModeChanged', { detail: { mode: solveMode } }));
+            });
+        </script>
 </body>
 
 </html>
