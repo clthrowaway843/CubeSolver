@@ -3,7 +3,7 @@
     "private": true,
     "version": "1.0.0",
     "type": "module",
-    "homepage": "https://clthrowaway843.github.io/CubeSolver",
+    "homepage": "https://jordanbarrett228.github.io/CubeSolver",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
