@@ -141,20 +141,20 @@ const OLL_MASKS: string[] = [
     "000010000010011111110", //(dot only with 1 bar on left)                                 2
     "000010001011010011011", //(dot with bottom right corner, single yellow on front)        3
     "001010000110110110010", //(dot with top right corner, single on back)                   4
-    "000011011001000011011", //(square is bottom right when single on right)                 5
-    "011011000100110110000", //(square is top right when single is on right)                 6
+    "110110000011011001000", //(square is top left, pair on front right)                     5
+    "011011000100110110000", //(square is top right pair on front left)                      6
     "010110100011011000001", //(lightning on left, pair on front)                            7
     "100110010110100000110", //(lightning on left, pair on back)                             8
     "010110001010110100100", //(fish no head, pair on front)                                 9
     "001110010010001001011", //(fish no head, pair on back)                                 10
-    "011110000010011001001", //(lightning on top, 1x pair in front)                               11
-    "001011010100100110010", //(lightning on right, 1x pair on left)                                12 
+    "000011110001001010011", //(lightning on bottom, 1x pair in back left)                  11
+    "000110011010100100110", //(lightning on bottom, 1x pair on back right)                 12 
     "000111100001011000011", //(bar + 1 on b left [6], 2x pair)                             13
     "000111001000110100110", //(bar + 1 on b right [8], 2x pair)                            14
-    "100111000001011001010", //(bar + 1 on t left [0], 1x pair in front right)                            15
-    "000111100100010100110", //(bar + 1 on b left [6], 1x pair in back right)                          16
+    "100111000001011001010", //(bar + 1 on t left [0], 1x pair in front right)              15
+    "000111100100010100110", //(bar + 1 on b left [6], 1x pair in back right)               16
     "100010001010010011110", //(dot diagonal)                                               17
-    "100010100111010010010", //(dot mickey mouse bar left)                                 18
+    "100010100111010010010", //(dot mickey mouse bar left)                                  18
     "101010000110010011010", //(dot mickey mouse pairs left right)                          19
     "101010101010010010010", //(dot all corners no edges)                                   20
     "010111010101000101000", //(cross solved, 2x on left and right)                         21
@@ -170,7 +170,7 @@ const OLL_MASKS: string[] = [
     "011011001000110010001", //(P on right(with pair in front))                             31
     "110110100010011000100", //(P on left(with pair in front))                              32
     "001111001000110000011", //(T with pairs in front and back)                             33
-    "101111000100010001010", //(C shape with singles oriented as U)                         34
+    "011010011010100010001", //(C, no bar)                                                  34
     "100011011001100010010", //(fish w singles)                                             35
     "110011001000010011100", //(W with pair on left)                                        36
     "110110001011110000000", //(fish w pairs)                                               37
@@ -179,8 +179,8 @@ const OLL_MASKS: string[] = [
     "100111001001110000010", //(long zig zag pair on left)                                  40
     "010110101010010000101", //(left lightning + 1 headlights in back)                      41
     "101110010010101000010", //(left lightning + 1 headlights in front)                     42
-    "111110000010111000000", //(p on top bar in front)                                      43
-    "110110100111010000000", //(P on left bar on right)                                     44
+    "100110110111000000010", //(p on left bar on right)                                     43
+    "001011011000000111010", //(P on right bar on left)                                     44
     "001111001000010101010", //(T with singles)                                             45
     "011010011010000111000", //(C shape with bar)                                           46
     "010011000101110010001", //(small L 1 pair in front headlights on right)                47
@@ -222,15 +222,15 @@ export const ollAlgorithms: { [key: number]: string } = {
     2: "F (R U R' U') F' f (R U R' U') f'",
     3: "f (R U R' U') f' (U') F (R U R' U') F'",
     4: "f (R U R' U') f' (U) F (R U R' U') F'",
-    5: "r' U2 (R U R' U) r",
+    5: "l' U2 L U L' U l",
     6: "r U2 (R' U' R U') r'",
     7: "r (U R' U R) U2 r'",
     8: "r' (U' R U' R') U2 r",
     9: "(R U R' U') (R' F R2) (U R' U' F')",
     10: "(R U R' U) (R' F R F') (R U2 R')",
-    11: "r U R' U R' F R F' R U2 r'",
-    12: "F (R U R' U') F' U F (R U R' U') F'",
-    13: "F U R U2 R' U' R U R' F'",
+    11: "M R U R' U R U2 R' U M'",
+    12: "M L' U' L U' L' U2 L U' M'",
+    13: "F U R U' R2 F' R U R U' R'",
     14: "r U R' U' r' F R2 U R' U' F'",
     15: "R' F' R L' U' L U R' F R",
     16: "R' F R U R' U' F' R U' R' U2 R",
@@ -251,7 +251,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     31: "(R' U' F) (U R U' R') F' R",
     32: "L U F' U' L' U L F L'",
     33: "(R U R' U') (R' F R F')",
-    34: "F R U R' U' R' F' r U R U' r'",
+    34: "f R f' U' r' U' R U M'",
     35: "(R U2) (R2) (F R F' R) U2 R'",
     36: "(L' U' L U') (L' U L U) (L F' L' F)",
     37: "F R (U' R' U') (R U R') F'",
@@ -260,8 +260,8 @@ export const ollAlgorithms: { [key: number]: string } = {
     40: "f R' F' R U R U' R' S'",
     41: "R U R' U R U2 R' F R U R' U' F'",
     42: "(R' U' R U' R' U2 R) F (R U R' U') F'",
-    43: "(R' U' F') (U F R)",
-    44: "F U R U' R' F'",
+    43: "B' U' R' U R B",
+    44: "f R U R' U' f'",
     45: "F R U R' U' F'",
     46: "r' U' F R' F' R U r",
     47: "F' (L' U' L U) (L' U' L U) F",
@@ -281,24 +281,26 @@ export const algReminders: { [key: number]: string } = {
     2: "F sexy F'  f sexy f'",
     3: "f sexy f'  U'  F sexy F'",
     4: "f sexy f'  U   F sexy F'",
-    5: "Fat antisune (U2 start)",
+    5: "Fat lefty sune (U2 start)",
     6: "Fat sune (U2 start)",
     7: "Fat sune",
     8: "Fat antisune",
 
-    11: "f' to left S move ending",
-    12: "f to right S move ending",
-
+   
+    11: "M sune",
+    12: "M lefty sune",
     28: "fat sexy skinny sexy",
     57: "skinny sexy fat sexy",
 
     33: "Second half of y perm",
     37: "First half of y perm",
 
+    39: "f' to left S move ending",
+    40: "f to right S move ending",
+
     41: "sune F sexy F'",
     42: "antisune F sexy F'",
-    43: "f' lefty sexy f",
-    44: "F sexy F'",
+    44: "f sexy f'",
     51: "f double sexy f'",
 
     45: "2 look alg for line",

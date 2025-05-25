@@ -2,6 +2,28 @@
 import { ollAlgorithms, algReminders } from '../handlers/ollHandler';
 import '../style.css'
 
+type CustomAlgData = {
+    alg: string;
+    rotation: string; // e.g., "", "U", "U2", "U'"
+};
+
+const savedCustomAlgs = localStorage.getItem('customAlgorithms');
+let customAlgorithms: { [index: number]: CustomAlgData } = savedCustomAlgs
+    ? JSON.parse(savedCustomAlgs)
+    : Object.fromEntries(
+        Object.entries(ollAlgorithms).map(([idx, alg]) => [
+            Number(idx),
+            { alg, rotation: "" }
+        ])
+    );
+
+const savedCustomNotes = localStorage.getItem('customNotes');
+let customNotes: { [index: number]: string } = savedCustomNotes
+    ? JSON.parse(savedCustomNotes)
+    : Object.fromEntries(
+        Object.entries(algReminders).map(([idx, note]) => [Number(idx), note])
+    );
+
 // Initialize the TwistyPlayer
 const OllTwisty = new TwistyPlayer({
     experimentalSetupAnchor: "end",
@@ -19,7 +41,6 @@ if (previousTwistyContainer) {
     previousTwistyContainer.appendChild(PreviousTwisty);
 }
 
-// Get DOM elements
 const ollTwistyContainer = document.getElementById('oll-twisty-container');
 if (ollTwistyContainer) {
     ollTwistyContainer.appendChild(OllTwisty);
@@ -33,6 +54,7 @@ const algorithmCheckboxes = document.getElementById('algorithm-checkboxes');
 const toggleSelectionButton = document.getElementById('toggle-selection');
 const selectAllButton = document.getElementById('select-all');
 const deselectAllButton = document.getElementById('deselect-all');
+const dropdownTwisties: { [index: number]: TwistyPlayer } = {};
 
 // Load selected algorithms from localStorage or default to all selected
 const savedAlgorithms = localStorage.getItem('selectedAlgorithms');
@@ -50,7 +72,6 @@ function populateAlgorithmList(): void {
 
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
-        checkbox.id = `alg-${index}`;
         checkbox.checked = selectedAlgorithms.includes(Number(index));
         checkbox.addEventListener('change', (event) => {
             const algIndex = Number(index);
@@ -63,46 +84,97 @@ function populateAlgorithmList(): void {
             event.stopPropagation(); // Prevent row click
         });
 
-        // Create a container for label and arrow
-        const labelArrowContainer = document.createElement('div');
-        labelArrowContainer.className = 'label-arrow-container';
+        // Prevent row click when clicking checkbox
+        checkbox.addEventListener('click', (event) => event.stopPropagation());
 
-        // Label: clicking it toggles the checkbox (default browser behavior)
+
         const label = document.createElement('label');
-        label.htmlFor = `alg-${index}`;
+        label.className = 'oll-label';
         label.textContent = nickname;
-        // Prevent label click from toggling the dropdown
-        label.addEventListener('click', (e) => e.stopPropagation());
 
         const arrowIcon = document.createElement('span');
         arrowIcon.className = 'arrow-icon';
         arrowIcon.textContent = ' ➢';
 
-        // Attach click to the label-arrow container (but not the label itself)
-        labelArrowContainer.addEventListener('click', () => {
-            const twistyContainer = checkboxContainer.querySelector('.twisty-container') as HTMLElement;
-            if (twistyContainer) {
-                twistyContainer.style.display = twistyContainer.style.display === 'none' ? 'block' : 'none';
-            } else {
-                const newTwistyContainer = document.createElement('div');
-                newTwistyContainer.className = 'twisty-container';
-                newTwistyContainer.style.display = 'block';
-                checkboxContainer.appendChild(newTwistyContainer);
+        const twistyContainer = document.createElement('div');
+        twistyContainer.className = 'twisty-inline';
+        const twisty = new TwistyPlayer({
+            experimentalSetupAnchor: 'end',
+            puzzle: '3x3x3',
+            background: 'none',
+            controlPanel: 'none',
+            hintFacelets: 'none',
+            cameraDistance: 4.5,
+        });
+        const rotation = customAlgorithms[Number(index)]?.rotation || "";
+        twisty.alg = rotation ? `${rotation} ${algorithm}` : algorithm;
+        dropdownTwisties[Number(index)] = twisty;
+        twistyContainer.appendChild(twisty);
 
-                const twisty = new TwistyPlayer({
-                    experimentalSetupAnchor: 'end',
-                    puzzle: '3x3x3',
-                });
-                twisty.alg = algorithm;
-                newTwistyContainer.appendChild(twisty);
+
+        // Custom algorithm input
+        const customAlgInput = document.createElement('input');
+        customAlgInput.type = 'text';
+        customAlgInput.value = customAlgorithms[Number(index)]?.alg || algorithm;
+        customAlgInput.className = 'custom-alg-input';
+        customAlgInput.title = 'Edit algorithm for this case';
+        customAlgInput.addEventListener('change', () => {
+            customAlgorithms[Number(index)] = {
+                ...customAlgorithms[Number(index)],
+                alg: customAlgInput.value
+            };
+            localStorage.setItem('customAlgorithms', JSON.stringify(customAlgorithms));
+        });
+
+        // Rotation selector
+        const rotationSelect = document.createElement('select');
+        ['', "U", "U2", "U'"].forEach(rot => {
+            const opt = document.createElement('option');
+            opt.value = rot;
+            opt.textContent = rot === '' ? 'Default' : rot;
+            if (customAlgorithms[Number(index)]?.rotation === rot) opt.selected = true;
+            rotationSelect.appendChild(opt);
+        });
+        rotationSelect.className = 'rotation-select';
+        rotationSelect.title = 'Set default U rotation for this case';
+        rotationSelect.addEventListener('change', () => {
+            let selectedRotation = rotationSelect.value;
+            if (selectedRotation === "U") selectedRotation = "U'";
+            else if (selectedRotation === "U'") selectedRotation = "U";
+            customAlgorithms[Number(index)] = {
+                ...customAlgorithms[Number(index)],
+                rotation: selectedRotation
+            };
+            localStorage.setItem('customAlgorithms', JSON.stringify(customAlgorithms));
+            const twisty = dropdownTwisties[Number(index)];
+            if (twisty) {
+                twisty.alg = selectedRotation ? `${selectedRotation} ${algorithm}` : algorithm;
             }
         });
 
-        labelArrowContainer.appendChild(label);
-        labelArrowContainer.appendChild(arrowIcon);
+        // Custom notes input
+        const customNoteInput = document.createElement('textarea');
+        customNoteInput.className = 'custom-note-input';
+        customNoteInput.placeholder = 'Add a note or reminder...';
+        customNoteInput.value = customNotes[Number(index)] ?? (algReminders[Number(index)] ?? '');
+        customNoteInput.title = 'Edit note for this case';
+        customNoteInput.rows = 2;
+        customNoteInput.addEventListener('change', () => {
+            customNotes[Number(index)] = customNoteInput.value;
+            localStorage.setItem('customNotes', JSON.stringify(customNotes));
+        });
 
+        const controlsWrapper = document.createElement('div');
+        controlsWrapper.className = 'controls-wrapper';
+        controlsWrapper.appendChild(label);
+        controlsWrapper.appendChild(customAlgInput);
+        controlsWrapper.appendChild(customNoteInput);
+        controlsWrapper.appendChild(rotationSelect);
         checkboxContainer.appendChild(checkbox);
-        checkboxContainer.appendChild(labelArrowContainer);
+        checkboxContainer.appendChild(controlsWrapper);
+        checkboxContainer.appendChild(twistyContainer);
+
+
         algorithmCheckboxes.appendChild(checkboxContainer);
     });
 }
@@ -160,15 +232,21 @@ function generateOLLTrainer(): void {
 
     // Get the correct OLL algorithm from the selected list
     const correctIndex = selectedAlgorithms[Math.floor(Math.random() * selectedAlgorithms.length)];
-    const correctAlgorithm = ollAlgorithms[correctIndex];
-    const correctReminder = algReminders[correctIndex]; // Get the reminder for the correct algorithm
+    const correctAlgData = customAlgorithms[correctIndex] || { alg: ollAlgorithms[correctIndex], rotation: "" };
+    const correctAlgorithm = correctAlgData.rotation ? `${correctAlgData.rotation} ${correctAlgData.alg}` : correctAlgData.alg;
+
+    const correctReminder = customNotes[correctIndex] ?? algReminders[correctIndex];
 
     // Generate 3 random incorrect algorithms from the selected list
     const incorrectOptions: { index: number; algorithm: string }[] = [];
-    while (incorrectOptions.length < 3) {
+    const maxIncorrect = Math.min(3, selectedAlgorithms.length - 1);
+    const maxTries = 100; // Prevent infinite loop if not enough options
+    for (let tries = 0, i = 0; i < maxIncorrect && tries < maxTries; tries++) {
         const randomIndex = selectedAlgorithms[Math.floor(Math.random() * selectedAlgorithms.length)];
-        if (randomIndex !== correctIndex) {
+        const alreadyUsed = incorrectOptions.some(opt => opt.index === randomIndex);
+        if (randomIndex !== correctIndex && !alreadyUsed) {
             incorrectOptions.push({ index: randomIndex, algorithm: ollAlgorithms[randomIndex] });
+            i++;
         }
     }
 
@@ -196,7 +274,7 @@ function generateOLLTrainer(): void {
         button.addEventListener('click', () => handleChoice(option.algorithm, correctAlgorithm, correctReminder));
 
         // Check if a reminder exists for this algorithm
-        const reminderText = algReminders[option.index];
+        const reminderText = customNotes[option.index] ?? algReminders[option.index];
         if (reminderText) {
             const reminder = document.createElement('span');
             reminder.className = 'reminder-text';
@@ -243,4 +321,17 @@ function handleChoice(selectedOption: string, correctOption: string, reminderTex
     generateOLLTrainer();
 }
 
-
+const resetAlgsButton = document.getElementById('reset-algs');
+if (resetAlgsButton) {
+    resetAlgsButton.addEventListener('click', () => {
+        // Reset customAlgorithms to the original ollAlgorithms
+        customAlgorithms = Object.fromEntries(
+            Object.entries(ollAlgorithms).map(([idx, alg]) => [
+                Number(idx),
+                { alg, rotation: "" }
+            ])
+        );
+        localStorage.setItem('customAlgorithms', JSON.stringify(customAlgorithms));
+        populateAlgorithmList();
+    });
+}
