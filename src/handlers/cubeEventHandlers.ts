@@ -76,9 +76,8 @@ var lastMoves: GanCubeMove[] = [];
 export function handleCubeEvent(
     event: GanCubeEvent,
     twistyPlayer: TwistyPlayer,
-    _basis: THREE.Quaternion | null, // not used anymore
     cubeQuaternion: THREE.Quaternion
-    ) {
+) {
     
     if (event.type == "GYRO") {
         handleGyroEvent(event, cubeQuaternion); // only pass cubeQuaternion

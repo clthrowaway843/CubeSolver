@@ -85,7 +85,7 @@ $('#connect').on('click', async () =>
         // You need a BluetoothDevice to call customMacAddressProvider, so use connectGanCube with the provider directly
         conn = await connectGanCube(customMacAddressProvider);
         conn.events$.subscribe((event) =>
-            handleCubeEvent(event, twistyPlayer, basis, cubeQuaternion)
+            handleCubeEvent(event, twistyPlayer, cubeQuaternion)
         );
         await conn.sendCubeCommand({ type: "REQUEST_HARDWARE" });
         await conn.sendCubeCommand({ type: "REQUEST_FACELETS" });
