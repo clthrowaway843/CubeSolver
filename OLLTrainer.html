@@ -26,13 +26,22 @@
     </div>
 
     <div id="algorithm-selection-container">
-        <button id="toggle-selection">Select Algorithms</button>
-        <div id="algorithm-list" style="display: none;">
-            <button id="select-all">Select All</button>
-            <button id="deselect-all">Deselect All</button>
-            <button id="reset-algs">Reset All Algorithms</button>
+        <div id="algorithm-list">
+            <div class="algorithm-controls">
+                <button id="select-all">Select All</button>
+                <button id="deselect-all">Deselect All</button>
+                <button id="reset-algs">Reset All Algorithms</button>
+                <label for="column-count" id="column-count-label">Columns:</label>
+                <input type="number" id="column-count" min="1" max="6" value="5" style="width: 3em;">
+                <label for="jump-oll-input" id="jump-oll-label" style="color:#1565c0; font-weight:bold;">Jump to OLL #:</label>
+                <input type="number" id="jump-oll-input" min="1" max="57" placeholder="OLL #" style="width: 5em;">
+                <button id="jump-oll-btn">Go</button>
+            </div>
+            <div id="group-navigator"></div>
             <div id="algorithm-checkboxes"></div>
         </div>
     </div>
+
+    
 </body>
 </html>

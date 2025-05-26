@@ -135,6 +135,7 @@ function rotateMask(mask: string): string {
 }
 
 // Precompute OLL masks as a hash map
+// Top, right, front, left, back
 const OLL_MASKS: string[] = [
     "000010000111010111010", //(dot only with bars on sides)                                 1
     "000010000010011111110", //(dot only with 1 bar on left)                                 2
@@ -177,7 +178,7 @@ const OLL_MASKS: string[] = [
     "001111100000011100010", //(long zig zag pair on right)                                 39
     "100111001001110000010", //(long zig zag pair on left)                                  40
     "010110101010010000101", //(left lightning + 1 headlights in back)                      41
-    "101110010010101000010", //(left lightning + 1 headlights in front)                     42
+    "011110001010010101000", //(left lightning + 1 headlights on left)                      42
     "100110110111000000010", //(p on left bar on right)                                     43
     "001011011000000111010", //(P on right bar on left)                                     44
     "001111001000010101010", //(T with singles)                                             45
@@ -248,7 +249,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     27: "R U R' U R U2 R'",
     28: "r U R' U' r' R U R U' R'",
     29: "r2 D' r U r' D r2 U' r' U' r",
-    30: "R U R' U' R' F R2 U' R' U' R U R' U R U' R' F'",
+    30: "r' D' r U' r' D r2 U' r' U r U r'",
     31: "(R' U' F) (U R U' R') F' R",
     32: "L U F' U' L' U L F L'",
     33: "(R U R' U') (R' F R F')",
@@ -260,7 +261,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     39: "f' L F L' U' L' U L S",
     40: "f R' F' R U R U' R' S'",
     41: "R U R' U R U2 R' F R U R' U' F'",
-    42: "(R' U' R U' R' U2 R) F (R U R' U') F'",
+    42: "R' U' F2 u' R U R' D R2 B",
     43: "B' U' R' U R B",
     44: "f R U R' U' f'",
     45: "F R U R' U' F'",
@@ -278,7 +279,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     57: "R U R' U' R' r U R U' r'",
 };
 
-export const algReminders: { [key: number: string } = {
+export const algReminders: { [key: number]: string } = {
     2: "F sexy F'  f sexy f'",
     3: "f sexy f'  U'  F sexy F'",
     4: "f sexy f'  U   F sexy F'",

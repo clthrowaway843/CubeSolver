@@ -5,6 +5,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 #app {
   margin: 0;
   padding: 1em;
@@ -117,11 +121,20 @@ canvas {
 
 /* Styling for algorithm blocks */
 .algorithm-block {
-    background: none;
-    color: #222; /* dark text for light background */
+    background: #e3eafc;
+    color: #222;
     font-weight: bold;
-    padding: 0;
-    border-radius: 0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin: 6px 0 0 0;
+    font-size: 1.08em;
+    line-height: 1.5;
+    word-break: break-word;      /* Allow breaking at any word boundary */
+    overflow-wrap: anywhere;     /* Break long moves if needed */
+    white-space: pre-line;       /* Allow wrapping and preserve line breaks */
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
 }
 
 .algorithm-move {
@@ -158,9 +171,6 @@ canvas {
     flex-direction: column; /* Stack buttons vertically */
     gap: 10px; /* Add space between buttons */
 }
-
-
-
 
 /* OLLTrainer.html styles */
 
@@ -238,139 +248,326 @@ canvas {
     }
 
 #algorithm-selection-container {
-    margin: 20px 0;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-    #algorithm-selection-container h3 {
-        margin: 0 0 10px;
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-#algorithm-list {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #ffffff;
-    max-height: 400px;
-    overflow-y: auto; /* Add scroll for long lists */
-}
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.2s ease;
-}
-
-.checkbox-container:hover {
-    background-color: #f0f0f0;
-}
-
-/* Styling for the checkbox */
-.checkbox-container input[type="checkbox"] {
-    margin-right: 10px;
-    transform: scale(1.2); /* Make the checkbox slightly larger */
-    cursor: pointer;
-}
-
-.checkbox-container label {
-    flex-grow: 1;
-    font-size: 14px;
-    color : black;
-    cursor: pointer;
-}
-
-.dropdown-container {
-    margin-top: 5px;
-}
-
-.dropdown-button {
-    background-color: #007bff;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.dropdown-button:hover {
-    background-color: #0056b3;
-}
-
-.twisty-container {
-    margin-top: 10px;
-    width: 384px;
-    height: 256px;
-    background-color: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 5px;
-    display: none; /* Initially hidden */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.label-container {
-    display: flex;
-    align-items: center;
-    gap: 5px; /* Add spacing between the label and the arrow icon */
-}
-
-.arrow-icon {
-    font-size: 14px;
-    color: #007bff;
-    cursor: pointer;
-    transition: transform 0.2s ease, color 0.2s ease;
-}
-
-.arrow-icon:hover {
-    color: #0056b3;
-}
-
-.arrow-icon.open {
-    transform: rotate(90deg); /* Rotate the arrow when the dropdown is open */
-}
-
-.reminder-text {
-    font-size: 1.27em;
-    margin-left: 10px;
-    font-style: oblique;
-}
-
-#previous-twisty-container h4 {
-    color: rgb(0 0 0); /* Example: a gold/orange color */
-}
-
-a {
-    color: #64e9ed;
-    text-decoration: underline;
-    transition: color 0.2s;
-}
-
-a:hover {
-    color: #fff;
-}
-
-.label-arrow-container {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 0.5em;
-}
-
-/* Make nicknamed moves more readable */
-.algorithm-nickname {
-    color: #1565c0; /* a readable blue */
-    font-weight: bold;
-    background: none;
+    margin: 0;
     padding: 0;
+    border: none;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+}
+
+/* Algorithm selection area */
+#algorithm-list {
+    display: block;
+    max-height: none;
+    min-height: 0;
+    overflow-y: visible;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-top: 0;
+}
+
+#algorithm-checkboxes {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+    margin-top: 16px;
+    /* grid-template-columns will be set dynamically */
+}
+.alg-row { display: contents; } /* Not needed with grid */
+
+.alg-box {
+    flex: 1 1 0;
+    background: #f7f7f7;
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    padding: 18px 18px 12px 18px;
+    margin: 0;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alg-label {
+    font-weight: bold;
+    color: #1565c0;
+    font-size: 1.1em;
+}
+
+.alg-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    background: #e3eafc;
+    border-radius: 6px 6px 0 0;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+.alg-nickname {
+    font-style: italic;
+    color: #444;
+    font-size: 0.95em;
+    margin: 8px 0 0 0;
+    text-align: center;
+}
+
+.twisty-inline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2px;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.twisty-inline twisty-player {
+    width: 100%;
+    height: auto; /* Let aspect-ratio control height */
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    min-height: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    pointer-events: none;
+    user-select: none;
+}
+
+.alg-inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.custom-alg-input {
+    width: 100%;
+    min-height: 36px;
+    max-height: 120px;
+    resize: vertical;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    padding: 8px 10px;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: pre-line;
+}
+
+.custom-note-input, .rotation-select {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    margin-bottom: 0;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.custom-note-input {
+    resize: vertical;
+    min-height: 36px;
+    max-height: 80px;
+}
+
+.alg-checkbox {
+    margin-right: 8px;
+    transform: scale(1.2);
+    vertical-align: middle;
+}
+
+/* Ensure all input containers and inputs don't overflow */
+.alg-box,
+.alg-inputs,
+.custom-alg-input,
+.custom-note-input,
+.rotation-select {
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.alg-box {
+    max-width: 100%;
+}
+
+#column-count-label {
+    color: #1565c0; /* dark blue */
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 4px;
+}
+
+#column-count {
+    border: 1px solid #bbb;
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 1em;
+    width: 3.5em;
+}
+
+/* Make group container always full width and single column */
+.oll-group-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 35 auto 12px auto; /* was 32px, now 12px */
+    background: #eaf6ff;
+    border-radius: 12px;
+    padding: 5px 8px 10px 8px; /* less vertical padding */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.oll-group-header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #d0e7ff;
+    border-radius: 8px;
+    padding: 10px 12px;  /* less vertical padding */
+    font-size: 1.15em;
+    font-weight: bold;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Grid for group contents */
+.oll-group-grid {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* grid-template-columns will be set dynamically in JS */
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+.oll-group-label {
+    color: #1565c0; /* Match OLL header blue */
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.oll-group-container.collapsed .oll-group-grid {
+    display: none;
+}
+.oll-group-container.collapsed .oll-group-header {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Optional: Add a visual indicator for collapsed/expanded state */
+
+.oll-group-container.collapsed {
+    margin-bottom: 0px !important;
+}
+
+.oll-group-header::after {
+    content: "▼";
+    margin-left: auto;
+    font-size: 0.9em;
+    color: #1565c0; /* Match OLL header blue */
+    transition: transform 0.2s;
+}
+.oll-group-container.collapsed .oll-group-header::after {
+    content: "►";
+    color: #1565c0;
+    transform: rotate(0deg);
+}
+
+.algorithm-controls {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #e3eafc;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-bottom: 18px;
+    box-shadow: 0 1px 4px rgba(21,101,192,0.06);
+    max-width: 1200px;
+}
+
+.algorithm-controls button {
+    background: #1565c0;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 7px 16px;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.algorithm-controls button:hover {
+    background: #0d47a1;
+}
+
+#group-navigator {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #f5faff;
+    border-radius: 8px;
+    padding: 10px 18px;
+    margin-bottom: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 1px 4px rgba(21,101,192,0.06);
+    max-width: 1200px;
+    overflow-x: auto;
+    --navigator-height: 58px; /* Set to your actual nav height */
+}
+
+.group-nav-link {
+    color: #1565c0;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    background: #e3eafc;
+    transition: background 0.15s, color 0.15s;
+    font-size: 1em;
+    white-space: nowrap;
+}
+.group-nav-link:hover, .group-nav-link:focus {
+    background: #1565c0;
+    color: #fff;
+    text-decoration: none;
+}
+
+.highlight-oll {
+    box-shadow: 0 0 0 4px #1565c0, 0 2px 8px rgba(21,101,192,0.12);
+    transition: box-shadow 0.3s;
+}
+.input-error {
+    border: 2px solid #e53935 !important;
+    background: #ffebee !important;
+}
+
+#jump-oll-label {
+    color: #1565c0;
+    font-weight: bold;
+    margin-left: 10px;
+    margin-right: 4px;
 }
