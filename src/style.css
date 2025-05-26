@@ -355,7 +355,7 @@ canvas {
     min-height: 36px;
     max-height: 120px;
     resize: vertical;
-    font-size: 1em;
+    font-size: 2em;
     border: 1px solid #ccc;
     border-radius: 6px;
     background: #fff;
@@ -570,4 +570,15 @@ canvas {
     font-weight: bold;
     margin-left: 10px;
     margin-right: 4px;
+}
+
+.algorithm-controls,
+#group-navigator,
+.oll-group-container,
+.oll-group-header,
+.oll-group-grid {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
 }
