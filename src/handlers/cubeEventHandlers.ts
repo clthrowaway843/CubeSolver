@@ -5,10 +5,9 @@ import { TwistyPlayer } from 'cubing/twisty';
 import * as THREE from 'three';
 import $ from 'jquery';
 import { addSolveDetails } from './solveHistoryHandler';
-import { findMatchingOLLMask, getOLLAlgorithm, getRandomOLLAlgorithm } from './ollHandler';
+import { findMatchingOLLMask, getOLLAlgorithm} from './ollHandler';
 import { patternToFacelets } from '../utils';
 import { KPattern } from 'cubing/kpuzzle';
-import { Alg } from 'cubing/alg';
 
 let isWhiteCrossCompleted = false;
 let isF2LCompleted = false;

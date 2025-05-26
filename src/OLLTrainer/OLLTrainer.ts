@@ -193,7 +193,7 @@ function createOLLBox(idx: number): HTMLDivElement {
     checkbox.id = `alg-checkbox-${idx}`;
     checkbox.checked = selectedAlgorithms.includes(idx);
     checkbox.className = 'alg-checkbox';
-    checkbox.addEventListener('change', (event) => {
+    checkbox.addEventListener('change', () => {
         if (checkbox.checked) {
             if (!selectedAlgorithms.includes(idx)) selectedAlgorithms.push(idx);
         } else {
