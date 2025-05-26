@@ -5,9 +5,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CubeSolver</title>
-  <script type="module" crossorigin src="/CubeSolver/assets/main-B-XyWxt3.js"></script>
-  <link rel="modulepreload" crossorigin href="/CubeSolver/assets/ollHandler-D_qtY1dw.js">
-  <link rel="stylesheet" crossorigin href="/CubeSolver/assets/ollHandler-LO2Hl4Ud.css">
+  <script type="module" crossorigin src="/CubeSolver/assets/main-BwHJcqgi.js"></script>
+  <link rel="modulepreload" crossorigin href="/CubeSolver/assets/ollHandler-BbwLFr_V.js">
+  <link rel="stylesheet" crossorigin href="/CubeSolver/assets/ollHandler-BwtMmKLn.css">
 </head>
 
 <body>
@@ -19,18 +19,19 @@
     </nav>
 
     <div id="app">
+        <div style="margin-bottom: 16px;">
+            <button id="toggle-solve-mode">Switch to OLL Trainer Mode</button>
+            <span id="current-solve-mode-label" style="margin-left: 8px;">Current Mode: Timed Solve</span>
+        </div>
         <div id="cube-controls-container" style="display: flex; align-items: center;">
             <div id="cube"></div>
             <div class="controls">
+                <input id="userMacInput" type="text" placeholder="Enter cube MAC address">
+
                 <button id="connect">Connect</button>
                 <button id="reset-state">Reset State</button>
                 <button id="reset-gyro">Reset Gyro</button>
             </div>
-            <div id="scramble-container">
-                <h3>Current Scramble:</h3>
-                <p id="current-scramble">No scramble generated yet.</p>
-            </div>
-
         </div>
 
 
@@ -99,8 +100,27 @@
             </tbody>
         </table>
     </div>
-
 
+
+    <script>
+            // Simple front-end toggle logic (update your TS as needed for full integration)
+            let solveMode = "timed"; // or "oll"
+            const toggleBtn = document.getElementById('toggle-solve-mode');
+            const modeLabel = document.getElementById('current-solve-mode-label');
+            toggleBtn.addEventListener('click', () => {
+                if (solveMode === "timed") {
+                    solveMode = "oll";
+                    toggleBtn.textContent = "Switch to Timed Solve Mode";
+                    modeLabel.textContent = "Current Mode: OLL Trainer";
+                } else {
+                    solveMode = "timed";
+                    toggleBtn.textContent = "Switch to OLL Trainer Mode";
+                    modeLabel.textContent = "Current Mode: Timed Solve";
+                }
+                // Optionally, call your TS/JS logic to actually switch modes in your app
+                window.dispatchEvent(new CustomEvent('solveModeChanged', { detail: { mode: solveMode } }));
+            });
+        </script>
 </body>
 
 </html>
