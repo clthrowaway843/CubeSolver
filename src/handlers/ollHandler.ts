@@ -164,8 +164,8 @@ const OLL_MASKS: string[] = [
     "110111010100100000100", //(antisune)                                                   26
     "010111110001001000001", //(sune)                                                       27
     "111110101010010000000", //(all solved except front and right edge)                     28
-    "011110001010110000001", //(lightning + 1, on top and 1 is bl)                          29
-    "110011100000011010100", //(lightning + 1, on top and 1 is br)                          30
+    "101110010110000001010", //(lightning + 1, on top and 1 is br)                          29
+    "110011100000011010100", //(lightning + 1, on top and 1 is bl)                          30
     "011011001000110010001", //(P on right(with pair in front))                             31
     "110110100010011000100", //(P on left(with pair in front))                              32
     "001111001000110000011", //(T with pairs in front and back)                             33
@@ -201,10 +201,12 @@ const OLL_MASKS_MAP: { [key: string]: { index: number; rotation: number } } = {}
 OLL_MASKS.forEach((mask, index) => {
     let currentMask = mask;
 
-    // Add all 4 rotations to the hash map
+    // Add all 4 rotations to the hash map, but only keep the first (lowest index/rotation) occurrence
     for (let rotation = 0; rotation < 4; rotation++) {
-        OLL_MASKS_MAP[currentMask] = { index: index + 1, rotation }; // Store both the algorithm index and rotation
-        currentMask = rotateMask(currentMask); // Rotate the mask by 90�
+        if (!(currentMask in OLL_MASKS_MAP)) {
+            OLL_MASKS_MAP[currentMask] = { index: index + 1, rotation };
+        }
+        currentMask = rotateMask(currentMask); // Rotate the mask by 90°
     }
 });
 
@@ -245,7 +247,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     26: "R' U' R U' R' U2 R",
     27: "R U R' U R U2 R'",
     28: "r U R' U' r' R U R U' R'",
-    29: "R U R' U' R U' R' F' U' F R U R'",
+    29: "r2 D' r U r' D r2 U' r' U' r",
     30: "R U R' U' R' F R2 U' R' U' R U R' U R U' R' F'",
     31: "(R' U' F) (U R U' R') F' R",
     32: "L U F' U' L' U L F L'",
@@ -276,7 +278,7 @@ export const ollAlgorithms: { [key: number]: string } = {
     57: "R U R' U' R' r U R U' r'",
 };
 
-export const algReminders: { [key: number]: string } = {
+export const algReminders: { [key: number: string } = {
     2: "F sexy F'  f sexy f'",
     3: "f sexy f'  U'  F sexy F'",
     4: "f sexy f'  U   F sexy F'",
